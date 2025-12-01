@@ -23,10 +23,10 @@ public class HockeyTeam
     public HockeyTeam(final String name,
                       final List<HockeyPlayer> roster)
     {
+        validateName(name);
+        validateRoster(roster);
         this.name = name;
         this.roster = roster;
-
-        validateName(name);
     }
 
     /**
@@ -40,6 +40,20 @@ public class HockeyTeam
         if (name == null || name.isEmpty())
         {
             throw new IllegalArgumentException("Name cannot be null or empty.");
+        }
+    }
+
+
+    /**
+     * Validates that the List is not null or empty.
+     *
+     * @param roster the list to validate
+     */
+    private static void validateRoster(final List<HockeyPlayer> roster)
+    {
+        if(roster == null)
+        {
+            throw new IllegalArgumentException("Roster cannot be null");
         }
     }
 

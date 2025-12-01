@@ -50,7 +50,8 @@ public class Main {
      *
      * @param args not used
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args)
+    {
         final int currentYear;
         final HockeyTeam team;
         final List<HockeyPlayer> roster;
@@ -60,9 +61,6 @@ public class Main {
         roster = team.getRoster();
 
         // 1) Supplier — create a call-up and add it
-        // TODO: Write a Supplier<HockeyPlayer> lambda here
-        // Supplier<HockeyPlayer> callUp = ...
-        // roster.add(callUp.get());
 
         final Supplier<HockeyPlayer> callUp =
                 () -> new HockeyPlayer("Hailey Kim", "F", 2003, 15);
@@ -71,57 +69,54 @@ public class Main {
 
 
         // 2) Predicate — forwards with 20+ goals
-        // TODO: Write Predicate<HockeyPlayer> lambdas: isForward, has20Plus
-        // Use them in a loop to print forwards with >=20 goals
-
         final Predicate<HockeyPlayer> isForward =
                 p -> p.getPosition().equalsIgnoreCase(FORWARD_POSITION);
         final Predicate<HockeyPlayer> highScore =
                 p -> p.getGoals() >= HIGH_SCORE;
 
-        for (final HockeyPlayer hockeyPlayer : roster) {
-            if (isForward.and(highScore).test(hockeyPlayer)) {
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
+            if (isForward.and(highScore).test(hockeyPlayer))
+            {
                 System.out.println(hockeyPlayer);
             }
         }
 
 
         // 3) Function — map player to a label string
-        // TODO: Write Function<HockeyPlayer,String> lambda
 
         final Function<HockeyPlayer, String> playerFunction =
                 p -> p.getPlayerName() + " — " + p.getGoals() + "G";
 
-        for (final HockeyPlayer hockeyPlayer : roster) {
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
             System.out.println(playerFunction.apply(hockeyPlayer));
         }
 
 
         // 4) Consumer — print names
-        // TODO: Write Consumer<HockeyPlayer> lambda
 
         final Consumer<HockeyPlayer> hockeyPlayerConsumer =
                 p -> System.out.println(p.getPlayerName());
 
-        for (final HockeyPlayer hockeyPlayer : roster) {
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
             hockeyPlayerConsumer.accept(hockeyPlayer);
         }
 
 
         // 5) UnaryOperator — uppercase names
-        // TODO: Write UnaryOperator<String> lambda
 
         final UnaryOperator<String> toUpper =
                 (inputString) -> inputString.toUpperCase();
 
-        for (final HockeyPlayer hockeyPlayer : roster) {
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
             System.out.println(toUpper.apply(hockeyPlayer.getPlayerName()));
         }
 
 
         // 6) Comparator — sort by goals DESC (no chaining)
-        // TODO: Write Comparator<HockeyPlayer> lambda
-        // Collections.sort(roster, yourComparator);
 
         final Comparator<HockeyPlayer> byGoalsDesc =
                 (p1, p2) -> p2.getGoals() - p1.getGoals();
@@ -129,36 +124,40 @@ public class Main {
         Collections.sort(roster, byGoalsDesc);
 
         System.out.println("Players sorted by goals (desc):");
-        for (final HockeyPlayer hockeyPlayer : roster) {
+
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
             System.out.println(hockeyPlayer.getPlayerName() + ": " + hockeyPlayer.getGoals());
         }
 
 
         // 7) Aggregation (loop) — total goals
-        // TODO: Use a loop to sum goals across the roster
 
         int totalGoals;
         totalGoals = STARTER;
 
-        for (final HockeyPlayer hockeyPlayer : roster) {
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
             totalGoals += hockeyPlayer.getGoals();
         }
+
         System.out.println("Total goals: " + totalGoals);
 
 
         // 8) Custom FI (EligibilityRule)
-        // TODO: Write an EligibilityRule lambda
-        // A player is eligible if age >= minAge AND goals >= minGoals
 
         final EligibilityRule rule =
                 (player, minAge, minGoals, year) ->
                         (year - player.getYearOfBirth()) >= minAge &&
                                 player.getGoals() >= minGoals;
 
-        System.out.println("Eligible players (age >= " + MIN_AGE_YEARS + ", goals >= " + MIN_GOALS + "):");
+        System.out.println("Eligible players (age >= " + MIN_AGE_YEARS +
+                ", goals >= " + MIN_GOALS + "):");
 
-        for (final HockeyPlayer hockeyPlayer : roster) {
-            if (rule.test(hockeyPlayer, MIN_AGE_YEARS, MIN_GOALS, currentYear)) {
+        for (final HockeyPlayer hockeyPlayer : roster)
+        {
+            if (rule.test(hockeyPlayer, MIN_AGE_YEARS, MIN_GOALS, currentYear))
+            {
                 System.out.println(hockeyPlayer.getPlayerName());
             }
         }

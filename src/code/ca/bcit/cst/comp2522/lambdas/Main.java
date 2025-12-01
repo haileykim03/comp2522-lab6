@@ -23,7 +23,7 @@ public class Main {
     private static final int HIGH_SCORE = 20;
     private static final String FORWARD_POSITION = "F";
     private static final int STARTER = 0;
-    private static final int MIN_AGE = 20;
+    private static final int MIN_AGE_YEARS = 20;
     private static final int MIN_GOALS = 15;
 
     /**
@@ -155,10 +155,10 @@ public class Main {
                         (year - player.getYearOfBirth()) >= minAge &&
                                 player.getGoals() >= minGoals;
 
-        System.out.println("Eligible players (age >= " + MIN_AGE + ", goals >= " + MIN_GOALS + "):");
+        System.out.println("Eligible players (age >= " + MIN_AGE_YEARS + ", goals >= " + MIN_GOALS + "):");
 
         for (final HockeyPlayer hockeyPlayer : roster) {
-            if (rule.test(hockeyPlayer, MIN_AGE, MIN_GOALS, currentYear)) {
+            if (rule.test(hockeyPlayer, MIN_AGE_YEARS, MIN_GOALS, currentYear)) {
                 System.out.println(hockeyPlayer.getPlayerName());
             }
         }

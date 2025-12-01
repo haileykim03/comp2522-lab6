@@ -4,6 +4,7 @@ package ca.bcit.cst.comp2522.lambdas;
  * Represents a hockey player with basic stats.
  *
  * @author Hailey Kim
+ * @author Luis Seberon
  * @version 1.0
  */
 public class HockeyPlayer
@@ -18,7 +19,7 @@ public class HockeyPlayer
     private final int goals;
 
     /**
-     * Creates a HockeyPlayer with given attributes.
+     * Constructs a HockeyPlayer
      *
      * @param name        player's name
      * @param position    player's position (F, D, or G)
@@ -39,8 +40,9 @@ public class HockeyPlayer
     }
 
     /**
+     * Validates that the player name is not null or empty.
      *
-     * @param name
+     * @param name the name to validate
      */
     private static void validateName(final String name)
     {
@@ -51,8 +53,9 @@ public class HockeyPlayer
     }
 
     /**
+     * Returns the name of the player.
      *
-     * @return
+     * @return the player's name
      */
     protected String getPlayerName()
     {
@@ -60,8 +63,9 @@ public class HockeyPlayer
     }
 
     /**
+     * Returns the position of the player.
      *
-     * @return
+     * @return the player's position
      */
     protected String getPosition()
     {
@@ -69,8 +73,9 @@ public class HockeyPlayer
     }
 
     /**
+     * Returns the year the player was born.
      *
-     * @return
+     * @return the player's year of birth
      */
     protected int getYearOfBirth()
     {
@@ -78,8 +83,9 @@ public class HockeyPlayer
     }
 
     /**
+     * Returns the number of goals scored by the player.
      *
-     * @return
+     * @return the number of goals scored
      */
     protected int getGoals()
     {

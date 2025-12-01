@@ -3,7 +3,10 @@ package ca.bcit.cst.comp2522.lambdas;
 import java.util.List;
 
 /**
+ * Represents a hockey team consisting of a name and a roster of players.
+ *
  * @author Hailey Kim
+ * @author Luis Sebaron
  * @version 1.0
  */
 public class HockeyTeam
@@ -12,11 +15,13 @@ public class HockeyTeam
     private final List<HockeyPlayer> roster;
 
     /**
+     * Constructs a HockeyTeam
      *
-     * @param name
-     * @param roster
+     * @param name the name of the hockey team
+     * @param roster the list of players in the team
      */
-    public HockeyTeam(final String name, final List<HockeyPlayer> roster)
+    public HockeyTeam(final String name,
+                      final List<HockeyPlayer> roster)
     {
         this.name = name;
         this.roster = roster;
@@ -25,8 +30,10 @@ public class HockeyTeam
     }
 
     /**
+     * Validates that the team name is not null or empty.
      *
-     * @param name
+     * @param name the name to validate
+     * @throws IllegalArgumentException if the name is null or empty
      */
     private static void validateName(final String name)
     {
@@ -37,8 +44,9 @@ public class HockeyTeam
     }
 
     /**
+     * Returns the name of the hockey team.
      *
-     * @return
+     * @return the team name
      */
     public String getName()
     {
@@ -46,8 +54,9 @@ public class HockeyTeam
     }
 
     /**
+     * Returns the roster of players in the team.
      *
-     * @return
+     * @return a list of HockeyPlayer objects representing the roster
      */
     public List<HockeyPlayer> getRoster()
     {

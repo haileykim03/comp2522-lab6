@@ -10,6 +10,7 @@ import java.util.function.*;
  * Demonstrates the use of the HockeyPlayer and HockeyTeam classes
  *
  * @author Hailey Kim
+ * @author Luis Sebaron
  * @version 1.0
  */
 public class Main {
@@ -22,10 +23,12 @@ public class Main {
     private static final int MIN_GOALS = 15;
 
     /**
+     * Creates a sample HockeyTeam populated with a predefined list of players.
      *
-     * @return
+     * @return a HockeyTeam instance containing the sample players
      */
-    private static HockeyTeam sampleTeam() {
+    private static HockeyTeam sampleTeam()
+    {
         final List<HockeyPlayer> ps;
         ps = new ArrayList<>();
 
@@ -85,7 +88,7 @@ public class Main {
         final Function<HockeyPlayer, String> playerFunction =
                 p -> p.getPlayerName() + " — " + p.getGoals() + "G";
 
-        for (HockeyPlayer hockeyPlayer : roster) {
+        for (final HockeyPlayer hockeyPlayer : roster) {
             System.out.println(playerFunction.apply(hockeyPlayer));
         }
 
@@ -122,7 +125,7 @@ public class Main {
         Collections.sort(roster, byGoalsDesc);
 
         System.out.println("Players sorted by goals (desc):");
-        for (HockeyPlayer hockeyPlayer : roster) {
+        for (final HockeyPlayer hockeyPlayer : roster) {
             System.out.println(hockeyPlayer.getPlayerName() + ": " + hockeyPlayer.getGoals());
         }
 
